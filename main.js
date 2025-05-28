@@ -1,4 +1,4 @@
-// Función principal que se ejecuta cuando el DOM está listo
+// Función  que se ejecuta cuando el DOM está listo
 document.addEventListener('DOMContentLoaded', () => {
   const app = document.getElementById('app')
   const cargando = document.getElementById('cargando')
@@ -151,11 +151,184 @@ function createHeader() {
   return header
 }
 
+// EL MAIN
 function createMainContent() {
   const main = document.createElement('main')
   main.style.maxWidth = '1200px'
   main.style.margin = 'auto'
   main.style.padding = '15px'
+  main.style.display = 'flex'
+
+  // Contenedor principal con dos columnas
+  const columnmaincontainer = document.createElement('div')
+  columnmaincontainer.style.display = 'flex'
+  columnmaincontainer.style.width = '100%'
+  columnmaincontainer.style.gap = '20px'
+
+  // Columna izquierda (filtros)
+  const filtersColumn = document.createElement('aside')
+  filtersColumn.style.width = '25%'
+  filtersColumn.style.minWidth = '250px'
+
+  // Sección de filtros
+  const filtersSection = document.createElement('section')
+  filtersSection.style.backgroundColor = '#f9f9f9'
+  filtersSection.style.padding = '20px'
+  filtersSection.style.borderRadius = '8px'
+  filtersSection.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)'
+
+  // Título de filtros
+  const filtersTitle = document.createElement('h2')
+  filtersTitle.textContent = 'Filtrar productos'
+  filtersTitle.style.marginTop = '0'
+  filtersTitle.style.marginBottom = '20px'
+  filtersTitle.style.color = '#333'
+
+  // Filtro por precio
+  const priceFilter = document.createElement('div')
+  priceFilter.style.marginBottom = '25px'
+
+  const priceTitle = document.createElement('h3')
+  priceTitle.textContent = 'Rango de precios'
+  priceTitle.style.marginBottom = '10px'
+  priceTitle.style.fontSize = '16px'
+
+  const priceRange = document.createElement('div')
+  priceRange.style.display = 'flex'
+  priceRange.style.justifyContent = 'space-between'
+  priceRange.style.marginBottom = '10px'
+
+  const minPrice = document.createElement('span')
+  minPrice.textContent = '0 €'
+  const maxPrice = document.createElement('span')
+  maxPrice.textContent = '1000 €'
+
+  priceRange.appendChild(minPrice)
+  priceRange.appendChild(maxPrice)
+
+  const priceSlider = document.createElement('input')
+  priceSlider.type = 'range'
+  priceSlider.min = '0'
+  priceSlider.max = '1000'
+  priceSlider.style.width = '100%'
+
+  priceFilter.appendChild(priceTitle)
+  priceFilter.appendChild(priceRange)
+  priceFilter.appendChild(priceSlider)
+
+  // Filtro por categoría
+  const categoryFilter = document.createElement('div')
+  categoryFilter.style.marginBottom = '25px'
+
+  const categoryTitle = document.createElement('h3')
+  categoryTitle.textContent = 'Categorías'
+  categoryTitle.style.marginBottom = '10px'
+  categoryTitle.style.fontSize = '16px'
+
+  const categoriesList = [
+    'Procesadores',
+    'Tarjetas gráficas',
+    'Memoria RAM',
+    'Almacenamiento',
+    'Placas base',
+    'Fuentes de alimentación',
+    'Cajas y torres'
+  ]
+
+  categoriesList.forEach((category) => {
+    const categoryItem = document.createElement('div')
+    categoryItem.style.marginBottom = '8px'
+
+    const checkbox = document.createElement('input')
+    checkbox.type = 'checkbox'
+    checkbox.id = `category-${category.toLowerCase().replace(' ', '-')}`
+    checkbox.style.marginRight = '10px'
+
+    const label = document.createElement('label')
+    label.htmlFor = checkbox.id
+    label.textContent = category
+    label.style.fontSize = '14px'
+
+    categoryItem.appendChild(checkbox)
+    categoryItem.appendChild(label)
+    categoryFilter.appendChild(categoryItem)
+  })
+
+  categoryFilter.appendChild(categoryTitle)
+
+  // Filtro por marca
+  const brandFilter = document.createElement('div')
+  brandFilter.style.marginBottom = '25px'
+
+  const brandTitle = document.createElement('h3')
+  brandTitle.textContent = 'Marcas'
+  brandTitle.style.marginBottom = '10px'
+  brandTitle.style.fontSize = '16px'
+
+  const brandsList = [
+    'AMD',
+    'Intel',
+    'NVIDIA',
+    'Corsair',
+    'Samsung',
+    'Western Digital',
+    'ASUS',
+    'MSI'
+  ]
+
+  brandsList.forEach((brand) => {
+    const brandItem = document.createElement('div')
+    brandItem.style.marginBottom = '8px'
+
+    const checkbox = document.createElement('input')
+    checkbox.type = 'checkbox'
+    checkbox.id = `brand-${brand.toLowerCase()}`
+    checkbox.style.marginRight = '10px'
+
+    const label = document.createElement('label')
+    label.htmlFor = checkbox.id
+    label.textContent = brand
+    label.style.fontSize = '14px'
+
+    brandItem.appendChild(checkbox)
+    brandItem.appendChild(label)
+    brandFilter.appendChild(brandItem)
+  })
+
+  brandFilter.appendChild(brandTitle)
+
+  // Botón de aplicar filtros
+  const applyButton = document.createElement('button')
+  applyButton.textContent = 'Aplicar filtros'
+  applyButton.style.width = '100%'
+  applyButton.style.padding = '10px'
+  applyButton.style.backgroundColor = '#ff6a00'
+  applyButton.style.color = 'white'
+  applyButton.style.border = 'none'
+  applyButton.style.borderRadius = '4px'
+  applyButton.style.cursor = 'pointer'
+  applyButton.style.fontWeight = 'bold'
+  applyButton.style.transition = 'background-color 0.3s'
+
+  applyButton.addEventListener('mouseover', () => {
+    applyButton.style.backgroundColor = '#e05d00'
+  })
+
+  applyButton.addEventListener('mouseout', () => {
+    applyButton.style.backgroundColor = '#ff6a00'
+  })
+
+  // Ensamblar sección de filtros
+  filtersSection.appendChild(filtersTitle)
+  filtersSection.appendChild(priceFilter)
+  filtersSection.appendChild(categoryFilter)
+  filtersSection.appendChild(brandFilter)
+  filtersSection.appendChild(applyButton)
+  filtersColumn.appendChild(filtersSection)
+
+  // Columna derecha (contenido principal)
+  const contentColumn = document.createElement('div')
+  contentColumn.style.width = '75%'
 
   // Banner principal
   const banner = document.createElement('div')
@@ -188,70 +361,6 @@ function createMainContent() {
   bannerContent.appendChild(bannerTitle)
   bannerContent.appendChild(bannerSubtitle)
   banner.appendChild(bannerContent)
-
-  // Sección de categorías
-  const categoriesTitle = document.createElement('h2')
-  categoriesTitle.textContent = 'Categorías destacadas'
-  categoriesTitle.style.marginBottom = '20px'
-
-  const categoriesContainer = document.createElement('div')
-  categoriesContainer.style.display = 'grid'
-  categoriesContainer.style.gridTemplateColumns = 'repeat(4, 1fr)'
-  categoriesContainer.style.gap = '15px'
-  categoriesContainer.style.marginBottom = '30px'
-
-  const categories = [
-    {
-      name: 'Procesadores',
-      image: 'https://via.placeholder.com/200x150?text=Procesadores'
-    },
-    {
-      name: 'Tarjetas Gráficas',
-      image: 'https://via.placeholder.com/200x150?text=Gráficas'
-    },
-    {
-      name: 'Memoria RAM',
-      image: 'https://via.placeholder.com/200x150?text=RAM'
-    },
-    {
-      name: 'Almacenamiento',
-      image: 'https://via.placeholder.com/200x150?text=SSD/HDD'
-    }
-  ]
-
-  categories.forEach((category) => {
-    const categoryCard = document.createElement('div')
-    categoryCard.style.border = '1px solid #ddd'
-    categoryCard.style.borderRadius = '8px'
-    categoryCard.style.overflow = 'hidden'
-    categoryCard.style.transition = 'transform 0.3s'
-
-    categoryCard.addEventListener('mouseover', () => {
-      categoryCard.style.transform = 'translateY(-5px)'
-    })
-
-    categoryCard.addEventListener('mouseout', () => {
-      categoryCard.style.transform = 'none'
-    })
-
-    const categoryImage = document.createElement('img')
-    categoryImage.src = category.image
-    categoryImage.alt = category.name
-    categoryImage.style.width = '100%'
-    categoryImage.style.height = '150px'
-    categoryImage.style.objectFit = 'cover'
-
-    const categoryName = document.createElement('h3')
-    categoryName.textContent = category.name
-    categoryName.style.padding = '10px'
-    categoryName.style.margin = '0'
-    categoryName.style.textAlign = 'center'
-    categoryName.style.backgroundColor = '#f9f9f9'
-
-    categoryCard.appendChild(categoryImage)
-    categoryCard.appendChild(categoryName)
-    categoriesContainer.appendChild(categoryCard)
-  })
 
   // Sección de productos destacados
   const featuredTitle = document.createElement('h2')
@@ -474,11 +583,14 @@ function createMainContent() {
   })
 
   // Ensamblar contenido principal
-  main.appendChild(banner)
-  main.appendChild(categoriesTitle)
-  main.appendChild(categoriesContainer)
-  main.appendChild(featuredTitle)
-  main.appendChild(productsContainer)
+  contentColumn.appendChild(banner)
+  contentColumn.appendChild(featuredTitle)
+  contentColumn.appendChild(productsContainer)
+
+  columnmaincontainer.appendChild(filtersColumn)
+  columnmaincontainer.appendChild(contentColumn)
+
+  main.appendChild(columnmaincontainer)
 
   return main
 }
