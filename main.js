@@ -154,8 +154,243 @@ function createHeader() {
 function createMainContent() {
   const main = document.createElement('main')
   main.style.maxWidth = '1200px'
-  main.style.margin = '20px auto'
-  main.style.padding = '0 15px'
+  main.style.margin = 'auto'
+  main.style.padding = '15px'
+
+  // Banner principal
+  const banner = document.createElement('div')
+  banner.style.backgroundColor = '#f5f5f5'
+  banner.style.height = '300px'
+  banner.style.borderRadius = '8px'
+  banner.style.marginBottom = '20px'
+  banner.style.display = 'flex'
+  banner.style.justifyContent = 'center'
+  banner.style.alignItems = 'center'
+  banner.style.backgroundImage =
+    'url("https://img.pccomponentes.com/pcblog/1702940400000/head-ordenadores-1.jpg")'
+  banner.style.backgroundSize = 'contain'
+
+  const bannerContent = document.createElement('div')
+  bannerContent.style.textAlign = 'center'
+  bannerContent.style.color = 'white'
+  bannerContent.style.textShadow = '1px 1px 3px rgba(0,0,0,0.8)'
+
+  const bannerTitle = document.createElement('h1')
+  bannerTitle.textContent = 'Las mejores ofertas en componentes'
+  bannerTitle.style.fontSize = '2.5em'
+  bannerTitle.style.marginBottom = '10px'
+
+  const bannerSubtitle = document.createElement('p')
+  bannerSubtitle.textContent =
+    'Hasta un 50% de descuento en productos seleccionados'
+  bannerSubtitle.style.fontSize = '1.2em'
+
+  bannerContent.appendChild(bannerTitle)
+  bannerContent.appendChild(bannerSubtitle)
+  banner.appendChild(bannerContent)
+
+  // Sección de categorías
+  const categoriesTitle = document.createElement('h2')
+  categoriesTitle.textContent = 'Categorías destacadas'
+  categoriesTitle.style.marginBottom = '20px'
+
+  const categoriesContainer = document.createElement('div')
+  categoriesContainer.style.display = 'grid'
+  categoriesContainer.style.gridTemplateColumns = 'repeat(4, 1fr)'
+  categoriesContainer.style.gap = '15px'
+  categoriesContainer.style.marginBottom = '30px'
+
+  const categories = [
+    {
+      name: 'Procesadores',
+      image: 'https://via.placeholder.com/200x150?text=Procesadores'
+    },
+    {
+      name: 'Tarjetas Gráficas',
+      image: 'https://via.placeholder.com/200x150?text=Gráficas'
+    },
+    {
+      name: 'Memoria RAM',
+      image: 'https://via.placeholder.com/200x150?text=RAM'
+    },
+    {
+      name: 'Almacenamiento',
+      image: 'https://via.placeholder.com/200x150?text=SSD/HDD'
+    }
+  ]
+
+  categories.forEach((category) => {
+    const categoryCard = document.createElement('div')
+    categoryCard.style.border = '1px solid #ddd'
+    categoryCard.style.borderRadius = '8px'
+    categoryCard.style.overflow = 'hidden'
+    categoryCard.style.transition = 'transform 0.3s'
+
+    categoryCard.addEventListener('mouseover', () => {
+      categoryCard.style.transform = 'translateY(-5px)'
+    })
+
+    categoryCard.addEventListener('mouseout', () => {
+      categoryCard.style.transform = 'none'
+    })
+
+    const categoryImage = document.createElement('img')
+    categoryImage.src = category.image
+    categoryImage.alt = category.name
+    categoryImage.style.width = '100%'
+    categoryImage.style.height = '150px'
+    categoryImage.style.objectFit = 'cover'
+
+    const categoryName = document.createElement('h3')
+    categoryName.textContent = category.name
+    categoryName.style.padding = '10px'
+    categoryName.style.margin = '0'
+    categoryName.style.textAlign = 'center'
+    categoryName.style.backgroundColor = '#f9f9f9'
+
+    categoryCard.appendChild(categoryImage)
+    categoryCard.appendChild(categoryName)
+    categoriesContainer.appendChild(categoryCard)
+  })
+
+  // Sección de productos destacados
+  const featuredTitle = document.createElement('h2')
+  featuredTitle.textContent = 'Productos destacados'
+  featuredTitle.style.marginBottom = '20px'
+
+  const productsContainer = document.createElement('div')
+  productsContainer.style.display = 'grid'
+  productsContainer.style.gridTemplateColumns = 'repeat(4, 1fr)'
+  productsContainer.style.gap = '20px'
+
+  const products = [
+    {
+      name: 'Procesador AMD Ryzen 7 5800X',
+      price: '329,99 €',
+      stars: '4',
+      reviews: '250',
+      image: 'https://via.placeholder.com/200x200?text=Ryzen+7+5800X'
+    },
+    {
+      name: 'Tarjeta Gráfica NVIDIA RTX 3080',
+      price: '799,99 €',
+      stars: '4',
+      reviews: '250',
+      image: 'https://via.placeholder.com/200x200?text=RTX+3080'
+    },
+    {
+      name: 'Memoria RAM Corsair 32GB DDR4',
+      price: '129,99 €',
+      stars: '4',
+      reviews: '250',
+      image: 'https://via.placeholder.com/200x200?text=RAM+32GB'
+    },
+    {
+      name: 'SSD Samsung 1TB NVMe',
+      price: '109,99 €',
+      stars: '4',
+      reviews: '250',
+      image: 'https://via.placeholder.com/200x200?text=SSD+1TB'
+    }
+  ]
+
+  products.forEach((product) => {
+    const productCard = document.createElement('div')
+    productCard.style.border = '1px solid #ddd'
+    productCard.style.borderRadius = '8px'
+    productCard.style.padding = '15px'
+    productCard.style.transition = 'transform 0.3s'
+    productCard.style.backgroundColor = 'white'
+
+    productCard.addEventListener('mouseover', () => {
+      productCard.style.transform = 'translateY(-5px)'
+      productCard.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)'
+    })
+
+    productCard.addEventListener('mouseout', () => {
+      productCard.style.transform = 'none'
+      productCard.style.boxShadow = 'none'
+    })
+
+    // Imagen del producto
+    const productImage = document.createElement('img')
+    productImage.src = product.image
+    productImage.alt = product.name
+    productImage.style.width = '100%'
+    productImage.style.height = '180px'
+    productImage.style.objectFit = 'contain'
+    productImage.style.marginBottom = '15px'
+
+    // Nombre del producto
+    const productName = document.createElement('h3')
+    productName.textContent = product.name
+    productName.style.margin = '0 0 10px 0'
+    productName.style.fontSize = '16px'
+    productName.style.height = '40px'
+    productName.style.overflow = 'hidden'
+
+    // Precio
+    const priceContainer = document.createElement('div')
+    priceContainer.style.marginBottom = '10px'
+
+    const currentPrice = document.createElement('div')
+    currentPrice.textContent = product.price
+    currentPrice.style.fontSize = '20px'
+    currentPrice.style.fontWeight = 'bold'
+    currentPrice.style.color = '#ff6a00'
+
+    const discountBadge = document.createElement('span')
+    discountBadge.textContent = product.discount
+    discountBadge.style.backgroundColor = '#ff6a00'
+    discountBadge.style.color = 'white'
+    discountBadge.style.padding = '2px 5px'
+    discountBadge.style.borderRadius = '3px'
+    discountBadge.style.fontSize = '12px'
+    discountBadge.style.marginLeft = '10px'
+
+    priceContainer.appendChild(currentPrice)
+
+    const priceWrapper = document.createElement('div')
+    priceWrapper.style.display = 'flex'
+    priceWrapper.style.alignItems = 'center'
+    priceWrapper.appendChild(discountBadge)
+    priceContainer.appendChild(priceWrapper)
+
+    // Botón de añadir al carrito
+    const addButton = document.createElement('button')
+    addButton.textContent = 'Añadir al carrito'
+    addButton.style.width = '100%'
+    addButton.style.padding = '8px'
+    addButton.style.backgroundColor = '#ff6a00'
+    addButton.style.color = 'white'
+    addButton.style.border = 'none'
+    addButton.style.borderRadius = '4px'
+    addButton.style.cursor = 'pointer'
+    addButton.style.transition = 'background-color 0.3s'
+
+    addButton.addEventListener('mouseover', () => {
+      addButton.style.backgroundColor = '#e05d00'
+    })
+
+    addButton.addEventListener('mouseout', () => {
+      addButton.style.backgroundColor = '#ff6a00'
+    })
+
+    // Ensamblar tarjeta de producto
+    productCard.appendChild(productImage)
+    productCard.appendChild(productName)
+    productCard.appendChild(priceContainer)
+    productCard.appendChild(addButton)
+
+    productsContainer.appendChild(productCard)
+  })
+
+  // Ensamblar contenido principal
+  main.appendChild(banner)
+  main.appendChild(categoriesTitle)
+  main.appendChild(categoriesContainer)
+  main.appendChild(featuredTitle)
+  main.appendChild(productsContainer)
 
   return main
 }
@@ -169,8 +404,8 @@ function createFooter() {
 
   const footerContainer = document.createElement('div')
   footerContainer.style.maxWidth = '1200px'
-  footerContainer.style.margin = '0 auto'
-  footerContainer.style.padding = '0 15px'
+  footerContainer.style.margin = 'auto'
+  footerContainer.style.padding = '15px'
   footerContainer.style.display = 'grid'
   footerContainer.style.gridTemplateColumns = 'repeat(4, 1fr)'
   footerContainer.style.gap = '30px'
@@ -185,7 +420,7 @@ function createFooter() {
   const infoText = document.createElement('p')
   infoText.textContent =
     'La mejor tienda de componentes informáticos y electrónica. Los mejores precios y servicio.'
-  infoText.style.fontSize = '14px'
+  infoText.style.fontSize = '15px'
   infoText.style.lineHeight = '1.5'
 
   infoColumn.appendChild(infoTitle)
@@ -196,7 +431,7 @@ function createFooter() {
   const linksTitle = document.createElement('h3')
   linksTitle.textContent = 'Enlaces rápidos'
   linksTitle.style.marginBottom = '15px'
-  linksTitle.style.fontSize = '18px'
+  linksTitle.style.fontSize = '20px'
 
   const linksList = document.createElement('ul')
   linksList.style.listStyle = 'none'
@@ -217,7 +452,7 @@ function createFooter() {
     link.textContent = linkText
     link.style.color = 'white'
     link.style.textDecoration = 'none'
-    link.style.fontSize = '14px'
+    link.style.fontSize = '20px'
 
     link.addEventListener('mouseover', () => {
       link.style.textDecoration = 'underline'
@@ -242,7 +477,7 @@ function createFooter() {
   contactTitle.style.fontSize = '18px'
 
   const contactInfo = document.createElement('div')
-  contactInfo.style.fontSize = '14px'
+  contactInfo.style.fontSize = '15px'
   contactInfo.style.lineHeight = '1.5'
 
   const address = document.createElement('p')
@@ -269,7 +504,7 @@ function createFooter() {
 
   const newsletterText = document.createElement('p')
   newsletterText.textContent = 'Suscríbete para recibir nuestras ofertas'
-  newsletterText.style.fontSize = '14px'
+  newsletterText.style.fontSize = '15px'
   newsletterText.style.marginBottom = '15px'
 
   const newsletterForm = document.createElement('form')
