@@ -269,6 +269,7 @@ function createMainContent() {
       price: '329,99 €',
       stars: '4',
       reviews: '250',
+      seller: 'PcComponentes',
       image: 'https://via.placeholder.com/200x200?text=Ryzen+7+5800X'
     },
     {
@@ -276,6 +277,7 @@ function createMainContent() {
       price: '799,99 €',
       stars: '4',
       reviews: '250',
+      seller: 'PcComponentes',
       image: 'https://via.placeholder.com/200x200?text=RTX+3080'
     },
     {
@@ -283,16 +285,93 @@ function createMainContent() {
       price: '129,99 €',
       stars: '4',
       reviews: '250',
+      seller: 'PcComponentes',
       image: 'https://via.placeholder.com/200x200?text=RAM+32GB'
     },
     {
-      name: 'SSD Samsung 1TB NVMe',
-      price: '109,99 €',
+      name: 'Memoria RAM Corsair 32GB DDR4',
+      price: '129,99 €',
       stars: '4',
       reviews: '250',
-      image: 'https://via.placeholder.com/200x200?text=SSD+1TB'
+      seller: 'PcComponentes',
+      image: 'https://via.placeholder.com/200x200?text=RAM+32GB'
+    },
+    {
+      name: 'Memoria RAM Corsair 32GB DDR4',
+      price: '129,99 €',
+      stars: '4',
+      reviews: '250',
+      seller: 'PcComponentes',
+      image: 'https://via.placeholder.com/200x200?text=RAM+32GB'
+    },
+    {
+      name: 'Memoria RAM Corsair 32GB DDR4',
+      price: '129,99 €',
+      stars: '4',
+      reviews: '250',
+      seller: 'PcComponentes',
+      image: 'https://via.placeholder.com/200x200?text=RAM+32GB'
+    },
+    {
+      name: 'Memoria RAM Corsair 32GB DDR4',
+      price: '129,99 €',
+      stars: '4',
+      reviews: '250',
+      seller: 'PcComponentes',
+      image: 'https://via.placeholder.com/200x200?text=RAM+32GB'
+    },
+    {
+      name: 'Memoria RAM Corsair 32GB DDR4',
+      price: '129,99 €',
+      stars: '4',
+      reviews: '250',
+      seller: 'PcComponentes',
+      image: 'https://via.placeholder.com/200x200?text=RAM+32GB'
+    },
+    {
+      name: 'Memoria RAM Corsair 32GB DDR4',
+      price: '129,99 €',
+      stars: '4',
+      reviews: '250',
+      seller: 'PcComponentes',
+      image: 'https://via.placeholder.com/200x200?text=RAM+32GB'
+    },
+    {
+      name: 'Memoria RAM Corsair 32GB DDR4',
+      price: '129,99 €',
+      stars: '4',
+      reviews: '250',
+      seller: 'PcComponentes',
+      image: 'https://via.placeholder.com/200x200?text=RAM+32GB'
     }
   ]
+
+  // Función para crear las estrellas de valoración
+  function createStarRating(rating) {
+    const starContainer = document.createElement('div')
+    starContainer.style.display = 'flex'
+    starContainer.style.margin = '5px 0'
+
+    // Estrellas llenas
+    for (let i = 0; i < rating; i++) {
+      const star = document.createElement('span')
+      star.innerHTML = '★'
+      star.style.color = '#FFD700'
+      star.style.marginRight = '2px'
+      starContainer.appendChild(star)
+    }
+
+    // Estrellas vacías
+    for (let i = rating; i < 5; i++) {
+      const star = document.createElement('span')
+      star.innerHTML = '☆'
+      star.style.color = '#CCCCCC'
+      star.style.marginRight = '2px'
+      starContainer.appendChild(star)
+    }
+
+    return starContainer
+  }
 
   products.forEach((product) => {
     const productCard = document.createElement('div')
@@ -329,6 +408,28 @@ function createMainContent() {
     productName.style.height = '40px'
     productName.style.overflow = 'hidden'
 
+    // Vendido por
+    const sellername = document.createElement('span')
+    sellername.textContent = 'Vendedor: ' + product.seller
+    sellername.style.marginLeft = '5px'
+    sellername.style.fontSize = '12px'
+
+    // Valoración con estrellas
+    const ratingContainer = document.createElement('div')
+    ratingContainer.style.display = 'flex'
+    ratingContainer.style.alignItems = 'center'
+    ratingContainer.style.marginBottom = '10px'
+
+    const stars = createStarRating(parseInt(product.stars))
+    const reviews = document.createElement('span')
+    reviews.textContent = `(${product.reviews})`
+    reviews.style.marginLeft = '5px'
+    reviews.style.fontSize = '12px'
+    reviews.style.color = '#666'
+
+    ratingContainer.appendChild(stars)
+    ratingContainer.appendChild(reviews)
+
     // Precio
     const priceContainer = document.createElement('div')
     priceContainer.style.marginBottom = '10px'
@@ -339,22 +440,7 @@ function createMainContent() {
     currentPrice.style.fontWeight = 'bold'
     currentPrice.style.color = '#ff6a00'
 
-    const discountBadge = document.createElement('span')
-    discountBadge.textContent = product.discount
-    discountBadge.style.backgroundColor = '#ff6a00'
-    discountBadge.style.color = 'white'
-    discountBadge.style.padding = '2px 5px'
-    discountBadge.style.borderRadius = '3px'
-    discountBadge.style.fontSize = '12px'
-    discountBadge.style.marginLeft = '10px'
-
     priceContainer.appendChild(currentPrice)
-
-    const priceWrapper = document.createElement('div')
-    priceWrapper.style.display = 'flex'
-    priceWrapper.style.alignItems = 'center'
-    priceWrapper.appendChild(discountBadge)
-    priceContainer.appendChild(priceWrapper)
 
     // Botón de añadir al carrito
     const addButton = document.createElement('button')
@@ -379,6 +465,8 @@ function createMainContent() {
     // Ensamblar tarjeta de producto
     productCard.appendChild(productImage)
     productCard.appendChild(productName)
+    productCard.appendChild(sellername)
+    productCard.appendChild(ratingContainer)
     productCard.appendChild(priceContainer)
     productCard.appendChild(addButton)
 
