@@ -114,6 +114,7 @@ function createHeader() {
 
   const navLinks = [
     'Componentes',
+    'Sobremesa',
     'Portátiles',
     'Periféricos',
     'Smartphones',
@@ -154,7 +155,7 @@ function createHeader() {
 // EL MAIN
 function createMainContent() {
   const main = document.createElement('main')
-  main.style.maxWidth = '1200px'
+  main.style.maxWidth = '50%'
   main.style.margin = 'auto'
   main.style.padding = '15px'
   main.style.display = 'flex'
@@ -163,11 +164,11 @@ function createMainContent() {
   const columnmaincontainer = document.createElement('div')
   columnmaincontainer.style.display = 'flex'
   columnmaincontainer.style.width = '100%'
-  columnmaincontainer.style.gap = '20px'
+  columnmaincontainer.style.gap = '10%'
 
   // Columna izquierda (filtros)
   const filtersColumn = document.createElement('aside')
-  filtersColumn.style.width = '25%'
+  filtersColumn.style.width = '30%'
   filtersColumn.style.minWidth = '250px'
 
   // Sección de filtros
@@ -225,6 +226,8 @@ function createMainContent() {
   categoryTitle.style.marginBottom = '10px'
   categoryTitle.style.fontSize = '16px'
 
+  categoryFilter.appendChild(categoryTitle)
+
   const categoriesList = [
     'Procesadores',
     'Tarjetas gráficas',
@@ -254,8 +257,6 @@ function createMainContent() {
     categoryFilter.appendChild(categoryItem)
   })
 
-  categoryFilter.appendChild(categoryTitle)
-
   // Filtro por marca
   const brandFilter = document.createElement('div')
   brandFilter.style.marginBottom = '25px'
@@ -264,6 +265,8 @@ function createMainContent() {
   brandTitle.textContent = 'Marcas'
   brandTitle.style.marginBottom = '10px'
   brandTitle.style.fontSize = '16px'
+
+  brandFilter.appendChild(brandTitle)
 
   const brandsList = [
     'AMD',
@@ -294,8 +297,6 @@ function createMainContent() {
     brandItem.appendChild(label)
     brandFilter.appendChild(brandItem)
   })
-
-  brandFilter.appendChild(brandTitle)
 
   // Botón de aplicar filtros
   const applyButton = document.createElement('button')
@@ -328,7 +329,7 @@ function createMainContent() {
 
   // Columna derecha (contenido principal)
   const contentColumn = document.createElement('div')
-  contentColumn.style.width = '75%'
+  contentColumn.style.width = '100%'
 
   // Banner principal
   const banner = document.createElement('div')
@@ -374,84 +375,89 @@ function createMainContent() {
 
   const products = [
     {
-      name: 'Procesador AMD Ryzen 7 5800X',
-      price: '329,99 €',
+      name: 'Tarjeta Gráfica ASUS TUF Gaming GeForce RTX 5070 OC 12GB GDDR7 Reflex 2 RTX AI DLSS4',
+      price: '743,85 €',
       stars: '4',
-      reviews: '250',
+      reviews: '500',
       seller: 'PcComponentes',
-      image: 'https://via.placeholder.com/200x200?text=Ryzen+7+5800X'
+      image:
+        '/assets/1587-asus-tuf-gaming-geforce-rtx-5070-oc-12gb-gddr7-reflex-2-rtx-ai-dlss4.webp'
     },
     {
-      name: 'Tarjeta Gráfica NVIDIA RTX 3080',
-      price: '799,99 €',
+      name: 'Tarjeta Gráfica Gigabyte Radeon RX 7600 XT GAMING OC 16GB GDDR6',
+      price: '333,98 €',
       stars: '4',
-      reviews: '250',
+      reviews: '750',
       seller: 'PcComponentes',
-      image: 'https://via.placeholder.com/200x200?text=RTX+3080'
+      image:
+        '/assets/1249-gigabyte-radeon-rx-7600-xt-gaming-oc-16gb-gddr6x.webp'
     },
     {
-      name: 'Memoria RAM Corsair 32GB DDR4',
+      name: 'Memoria RAM Corsair Vengeance DDR5 6000MHz 32GB 2x16GB CL30 Memoria Dual AMD EXPO e Intel XMP',
+      price: '114,99 €',
+      stars: '5',
+      reviews: '1131',
+      seller: 'PcComponentes',
+      image: '/assets/1517-corsair-vengeance-ddr5-6000mhz-32gb-2x16gb-cl30.webp'
+    },
+    {
+      name: 'Procesador AMD Ryzen 7 7800X3D 4.2 GHz/5 GHz',
+      price: '448,00 €',
+      stars: '5',
+      reviews: '1571',
+      seller: 'PcComponentes',
+      image: '/assets/1498-amd-ryzen-7-7800x3d-42-ghz-5-ghz-opiniones.webp'
+    },
+    {
+      name: 'Portátil Alurin Go Start Intel Celeron N4020/8GB/256GB SSD/15.6"',
+      price: '189,99 €',
+      stars: '2',
+      reviews: '300',
+      seller: 'PcComponentes',
+      image:
+        '/assets/1710-alurin-go-start-intel-pentium-n4020-8gb-256gb-ssd-156-comprar.webp'
+    },
+    {
+      name: 'Ordenador Sobremesa PcCom Ready Intel Core i5-12400F / 32 GB / 1TB SSD / RTX 4060',
+      price: '869,00 €',
+      stars: '3',
+      reviews: '450',
+      seller: 'PcComponentes',
+      image:
+        '/assets/1348-pccom-ready-intel-core-i5-12400f-32-gb-1tb-ssd-rtx-4060-opiniones.webp'
+    },
+    {
+      name: 'Monitor Samsung S27D302GAU 27" LED IPS FullHD 100Hz',
       price: '129,99 €',
-      stars: '4',
-      reviews: '250',
+      stars: '2',
+      reviews: '1115',
       seller: 'PcComponentes',
-      image: 'https://via.placeholder.com/200x200?text=RAM+32GB'
+      image: '/assets/1357-samsung-s27d302gau-27-led-ips-fullhd-100hz.webp'
     },
     {
-      name: 'Memoria RAM Corsair 32GB DDR4',
-      price: '129,99 €',
-      stars: '4',
-      reviews: '250',
+      name: 'Monitor LG 32UR550-B 31.5" LED VA UltraHD 4K FreeSync',
+      price: '289,99 €',
+      stars: '3',
+      reviews: '483',
       seller: 'PcComponentes',
-      image: 'https://via.placeholder.com/200x200?text=RAM+32GB'
+      image: '/assets/1292-lg-32ur550-b-315-led-va-ultrahd-4k-freesync.webp'
     },
     {
-      name: 'Memoria RAM Corsair 32GB DDR4',
-      price: '129,99 €',
+      name: 'Logitech G Pro X Auriculares Gaming Inalámbricos con Lightspeed Negros',
+      price: '109,99 €',
       stars: '4',
-      reviews: '250',
+      reviews: '1093',
       seller: 'PcComponentes',
-      image: 'https://via.placeholder.com/200x200?text=RAM+32GB'
+      image:
+        '/assets/1256-logitech-pro-x-auriculares-gaming-inalambricos-con-lightspeed-negros-foto.webp'
     },
     {
-      name: 'Memoria RAM Corsair 32GB DDR4',
-      price: '129,99 €',
-      stars: '4',
-      reviews: '250',
+      name: 'ASUS ROG Destrier Ergo Silla Gaming Negra',
+      price: '919,99 €',
+      stars: '5',
+      reviews: '41',
       seller: 'PcComponentes',
-      image: 'https://via.placeholder.com/200x200?text=RAM+32GB'
-    },
-    {
-      name: 'Memoria RAM Corsair 32GB DDR4',
-      price: '129,99 €',
-      stars: '4',
-      reviews: '250',
-      seller: 'PcComponentes',
-      image: 'https://via.placeholder.com/200x200?text=RAM+32GB'
-    },
-    {
-      name: 'Memoria RAM Corsair 32GB DDR4',
-      price: '129,99 €',
-      stars: '4',
-      reviews: '250',
-      seller: 'PcComponentes',
-      image: 'https://via.placeholder.com/200x200?text=RAM+32GB'
-    },
-    {
-      name: 'Memoria RAM Corsair 32GB DDR4',
-      price: '129,99 €',
-      stars: '4',
-      reviews: '250',
-      seller: 'PcComponentes',
-      image: 'https://via.placeholder.com/200x200?text=RAM+32GB'
-    },
-    {
-      name: 'Memoria RAM Corsair 32GB DDR4',
-      price: '129,99 €',
-      stars: '4',
-      reviews: '250',
-      seller: 'PcComponentes',
-      image: 'https://via.placeholder.com/200x200?text=RAM+32GB'
+      image: '/assets/172-asus-rog-destrier-ergo-silla-gaming-negra.webp'
     }
   ]
 
@@ -512,9 +518,9 @@ function createMainContent() {
     // Nombre del producto
     const productName = document.createElement('h3')
     productName.textContent = product.name
-    productName.style.margin = '0 0 10px 0'
+    productName.style.margin = '10px'
     productName.style.fontSize = '16px'
-    productName.style.height = '40px'
+    productName.style.height = '50px'
     productName.style.overflow = 'hidden'
 
     // Vendido por
