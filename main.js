@@ -20,81 +20,51 @@ function buildPage(container) {
 
 function createHeader() {
   const header = document.createElement('header')
-  header.style.backgroundColor = '#ff6a00'
-  header.style.padding = '30px '
-  header.style.color = 'white'
-  header.style.boxShadow = '2px 5px rgba(0,0,0,0.1)'
+  header.className = 'main-header'
 
   // Contenedor del header
-  const contenedorheader = document.createElement('div')
-  contenedorheader.style.display = 'flex'
-  contenedorheader.style.justifyContent = 'space-between'
-  contenedorheader.style.alignItems = 'center'
-  contenedorheader.style.maxWidth = '1200px'
-  contenedorheader.style.margin = 'auto'
-  contenedorheader.style.padding = '10px'
+  const headerContainer = document.createElement('div')
+  headerContainer.className = 'header-container'
 
   // Logo
   const logoLink = document.createElement('a')
-  logoLink.style.color = 'white'
-  logoLink.style.fontWeight = 'bold'
-  logoLink.style.fontSize = '60px'
+  logoLink.className = 'logo'
   logoLink.textContent = 'PcComponentes'
+  logoLink.href = '#'
 
   // Barra de búsqueda
   const searchContainer = document.createElement('div')
-  searchContainer.style.flexGrow = '1'
-  searchContainer.style.margin = '30px'
-  searchContainer.style.position = 'relative'
+  searchContainer.className = 'search-container'
 
   const searchInput = document.createElement('input')
   searchInput.type = 'text'
   searchInput.placeholder = 'Buscar productos...'
-  searchInput.style.width = '100%'
-  searchInput.style.padding = '8px 15px'
-  searchInput.style.borderRadius = '20px'
-  searchInput.style.border = 'none'
+  searchInput.className = 'search-input'
 
   const searchButton = document.createElement('button')
+  searchButton.className = 'search-button'
   searchButton.innerHTML = '🔍'
-  searchButton.style.position = 'absolute'
-  searchButton.style.right = '5px'
-  searchButton.style.top = '50%'
-  searchButton.style.transform = 'translateY(-50%)'
-  searchButton.style.background = 'none'
-  searchButton.style.border = 'none'
 
   searchContainer.appendChild(searchInput)
   searchContainer.appendChild(searchButton)
 
   // Iconos de usuario y carrito
   const iconsContainer = document.createElement('div')
-  iconsContainer.style.display = 'flex'
-  iconsContainer.style.gap = '40px'
+  iconsContainer.className = 'icons-container'
 
   const userIcon = document.createElement('a')
+  userIcon.className = 'icon user-icon'
   userIcon.innerHTML = '👤'
-  userIcon.style.fontSize = '40px'
+  userIcon.href = '#'
 
   const cartIcon = document.createElement('a')
+  cartIcon.className = 'icon cart-icon'
   cartIcon.innerHTML = '🛒'
-  cartIcon.style.fontSize = '40px'
-  cartIcon.style.position = 'relative'
+  cartIcon.href = '#'
 
   const cartCount = document.createElement('span')
+  cartCount.className = 'cart-count'
   cartCount.textContent = '0'
-  cartCount.style.position = 'absolute'
-  cartCount.style.top = '-10px'
-  cartCount.style.right = '-10px'
-  cartCount.style.backgroundColor = 'white'
-  cartCount.style.color = '#ff6a00'
-  cartCount.style.borderRadius = '50%'
-  cartCount.style.width = '20px'
-  cartCount.style.height = '20px'
-  cartCount.style.display = 'flex'
-  cartCount.style.justifyContent = 'center'
-  cartCount.style.alignItems = 'center'
-  cartCount.style.fontSize = '12px'
 
   cartIcon.appendChild(cartCount)
   iconsContainer.appendChild(userIcon)
@@ -102,15 +72,10 @@ function createHeader() {
 
   // Menú de navegación
   const nav = document.createElement('nav')
-  nav.style.backgroundColor = ' #f9f9f9'
-  nav.style.padding = '20px'
+  nav.className = 'main-nav'
 
   const navContainer = document.createElement('div')
-  navContainer.style.maxWidth = '1200px'
-  navContainer.style.margin = 'auto'
-  navContainer.style.padding = '10px'
-  navContainer.style.display = 'flex'
-  navContainer.style.gap = '20px'
+  navContainer.className = 'nav-container'
 
   const navLinks = [
     'Componentes',
@@ -119,34 +84,35 @@ function createHeader() {
     'Smartphones',
     'Ofertas'
   ]
+
   navLinks.forEach((linkText) => {
     const link = document.createElement('a')
     link.href = '#'
     link.textContent = linkText
-    link.style.fontSize = '20px'
-    link.style.fontWeight = 'bold'
-    link.style.color = '#333'
-    link.style.textDecoration = 'none'
-    link.style.padding = '5px 10px'
-    link.style.borderRadius = '5px'
-    link.addEventListener('mouseover', () => {
-      link.style.backgroundColor = '#555'
-    })
-    link.addEventListener('mouseout', () => {
-      link.style.backgroundColor = 'transparent'
-    })
+    link.className = 'nav-link'
     navContainer.appendChild(link)
   })
+
+  // Menú hamburguesa para móviles
+  const mobileMenuButton = document.createElement('button')
+  mobileMenuButton.className = 'mobile-menu-button'
+  mobileMenuButton.innerHTML = '☰'
 
   nav.appendChild(navContainer)
 
   // Ensamblar header
-  contenedorheader.appendChild(logoLink)
-  contenedorheader.appendChild(searchContainer)
-  contenedorheader.appendChild(iconsContainer)
+  headerContainer.appendChild(logoLink)
+  headerContainer.appendChild(searchContainer)
+  headerContainer.appendChild(iconsContainer)
+  headerContainer.appendChild(mobileMenuButton)
 
-  header.appendChild(contenedorheader)
+  header.appendChild(headerContainer)
   header.appendChild(nav)
+
+  // Evento para mostrar/ocultar menú en móviles
+  mobileMenuButton.addEventListener('click', () => {
+    nav.classList.toggle('show-mobile-menu')
+  })
 
   return header
 }
