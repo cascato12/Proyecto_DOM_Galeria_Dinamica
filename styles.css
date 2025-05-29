@@ -20,3 +20,45 @@ button {
 img {
   max-width: 100%;
 }
+.filters-column {
+  width: 25%;
+  width: 250px;
+}
+
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+/* Versión móvil */
+@media (max-width: 1170px) {
+  .column-main-container {
+    flex-direction: column;
+  }
+
+  .filters-column {
+    width: 100%;
+  }
+
+  .content-column {
+    width: 100%;
+  }
+
+  .product-container {
+    grid-template-columns: 2fr;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+}
