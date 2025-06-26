@@ -347,7 +347,7 @@ function createMainContent() {
       reviews: '500',
       seller: 'PcComponentes',
       image:
-        '/assets/1587-asus-tuf-gaming-geforce-rtx-5070-oc-12gb-gddr7-reflex-2-rtx-ai-dlss4.webp'
+        './assets/1587-asus-tuf-gaming-geforce-rtx-5070-oc-12gb-gddr7-reflex-2-rtx-ai-dlss4.webp'
     },
     {
       name: 'Tarjeta Gráfica Gigabyte Radeon RX 7600 XT GAMING OC 16GB GDDR6',
@@ -356,7 +356,7 @@ function createMainContent() {
       reviews: '750',
       seller: 'PcComponentes',
       image:
-        '/assets/1249-gigabyte-radeon-rx-7600-xt-gaming-oc-16gb-gddr6x.webp'
+        './assets/1249-gigabyte-radeon-rx-7600-xt-gaming-oc-16gb-gddr6x.webp'
     },
     {
       name: 'Memoria RAM Corsair Vengeance DDR5 6000MHz 32GB 2x16GB CL30 Memoria Dual AMD EXPO e Intel XMP',
@@ -364,7 +364,8 @@ function createMainContent() {
       stars: '5',
       reviews: '1131',
       seller: 'PcComponentes',
-      image: '/assets/1517-corsair-vengeance-ddr5-6000mhz-32gb-2x16gb-cl30.webp'
+      image:
+        './assets/1517-corsair-vengeance-ddr5-6000mhz-32gb-2x16gb-cl30.webp'
     },
     {
       name: 'Procesador AMD Ryzen 7 7800X3D 4.2 GHz/5 GHz',
@@ -372,7 +373,7 @@ function createMainContent() {
       stars: '5',
       reviews: '1571',
       seller: 'PcComponentes',
-      image: '/assets/1498-amd-ryzen-7-7800x3d-42-ghz-5-ghz-opiniones.webp'
+      image: './assets/1498-amd-ryzen-7-7800x3d-42-ghz-5-ghz-opiniones.webp'
     },
     {
       name: 'Portátil Alurin Go Start Intel Celeron N4020/8GB/256GB SSD/15.6"',
@@ -381,7 +382,7 @@ function createMainContent() {
       reviews: '300',
       seller: 'PcComponentes',
       image:
-        '/assets/1710-alurin-go-start-intel-pentium-n4020-8gb-256gb-ssd-156-comprar.webp'
+        './assets/1710-alurin-go-start-intel-pentium-n4020-8gb-256gb-ssd-156-comprar.webp'
     },
     {
       name: 'Ordenador Sobremesa PcCom Ready Intel Core i5-12400F / 32 GB / 1TB SSD / RTX 4060',
@@ -390,14 +391,14 @@ function createMainContent() {
       reviews: '450',
       seller: 'PcComponentes',
       image:
-        '/assets/1348-pccom-ready-intel-core-i5-12400f-32-gb-1tb-ssd-rtx-4060-opiniones.webp'
+        './assets/1348-pccom-ready-intel-core-i5-12400f-32-gb-1tb-ssd-rtx-4060-opiniones.webp'
     },
     {
       name: 'Monitor Samsung S27D302GAU 27" LED IPS FullHD 100Hz',
       stars: '2',
       reviews: '1115',
       seller: 'PcComponentes',
-      image: '/assets/1357-samsung-s27d302gau-27-led-ips-fullhd-100hz.webp'
+      image: './assets/1357-samsung-s27d302gau-27-led-ips-fullhd-100hz.webp'
     },
     {
       name: 'Monitor LG 32UR550-B 31.5" LED VA UltraHD 4K FreeSync',
@@ -405,7 +406,7 @@ function createMainContent() {
       stars: '3',
       reviews: '483',
       seller: 'PcComponentes',
-      image: '/assets/1292-lg-32ur550-b-315-led-va-ultrahd-4k-freesync.webp'
+      image: './assets/1292-lg-32ur550-b-315-led-va-ultrahd-4k-freesync.webp'
     },
     {
       name: 'Logitech G Pro X Auriculares Gaming Inalámbricos con Lightspeed Negros',
@@ -415,7 +416,7 @@ function createMainContent() {
       reviews: '1093',
       seller: 'PcComponentes',
       image:
-        '/assets/1256-logitech-pro-x-auriculares-gaming-inalambricos-con-lightspeed-negros-foto.webp'
+        './assets/1256-logitech-pro-x-auriculares-gaming-inalambricos-con-lightspeed-negros-foto.webp'
     },
     {
       name: 'ASUS ROG Destrier Ergo Silla Gaming Negra',
@@ -423,7 +424,7 @@ function createMainContent() {
       stars: '5',
       reviews: '41',
       seller: 'PcComponentes',
-      image: '/assets/172-asus-rog-destrier-ergo-silla-gaming-negra.webp'
+      image: './assets/172-asus-rog-destrier-ergo-silla-gaming-negra.webp'
     }
   ]
 
